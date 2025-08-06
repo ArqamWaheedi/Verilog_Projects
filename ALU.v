@@ -4,15 +4,15 @@ module ALU (
     output Sign, Zero, Carry, Parity, Overflow
 );
 
-    wire [16:0] sum; // To capture carry out
+    wire [16:0] sum; 
 
-    assign sum = X + Y;         // 16-bit addition + carry out
+    assign sum = X + Y;         
     assign Z = sum[15:0];
     assign Carry = sum[16];
 
     assign Sign = Z[15];
     assign Zero = (Z == 16'b0);
-    assign Parity = ~^Z;        // Even parity (XOR reduction)
+    assign Parity = ~^Z;        
     assign Overflow = (X[15] & Y[15] & ~Z[15]) | (~X[15] & ~Y[15] & Z[15]);
 
 endmodule
